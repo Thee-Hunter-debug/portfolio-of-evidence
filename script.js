@@ -42,7 +42,7 @@ const projects = [
     tags: ["Android Studio", "Kotlin", "SQLite"],
     desc: "Grade 12 Economics based game application",
     img: "",
-    github: "https://github.com/Thee-Hunter-debug",
+    github: "https://github.com/Thee-Hunter-debug/ECO-Grd12",
     status: "In Progress",
   },
   {

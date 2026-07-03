@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goodlife Mokgalagadi</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            colors: {
+              background: "#0a0a0f",
+              surface: "#13131f",
+              surfaceLight: "#1a1a2e",
+              primary: "#a855f7",
+              secondary: "#ec4899",
+              accent: "#8b5cf6",
+              teal: "#2dd4bf",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0a0a0f;
+        color: #fafafa;
+      }
+
+      .glass-card {
+        background: rgba(19, 19, 31, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .text-gradient {
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .project-card {
+        background: rgba(19, 19, 31, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        border-color: rgba(168, 85, 247, 0.5);
+        transform: translateY(-4px);
+      }
+
+      .skill-category-card {
+        background: rgba(19, 19, 31, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .skill-category-card:hover {
+        border-color: rgba(168, 85, 247, 0.3);
+      }
+
+      .skill-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .skill-bar-fill {
+        background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #a855f7;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .btn-primary {
+        background: #a855f7;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: #9333ea;
+        transform: translateY(-2px);
+      }
+
+      .tag {
+        background: rgba(168, 85, 247, 0.1);
+        border: 1px solid rgba(168, 85, 247, 0.2);
+        color: #a855f7;
+      }
+    </style>
+    <base target="_blank" />
+  </head>
+  <body class="font-sans antialiased">
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6"
+      id="navbar"
+    >
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 relative">
+            <svg viewBox="0 0 512 512" class="w-full h-full">
+              <rect x="140" y="180" width="80" height="40" fill="#a855f7" />
+              <rect x="140" y="220" width="40" height="80" fill="#a855f7" />
+              <rect x="140" y="300" width="80" height="40" fill="#a855f7" />
+              <rect x="180" y="260" width="40" height="80" fill="#a855f7" />
+              <rect x="260" y="180" width="40" height="160" fill="#ec4899" />
+              <rect x="300" y="180" width="40" height="80" fill="#ec4899" />
+              <rect x="340" y="220" width="40" height="40" fill="#ec4899" />
+              <rect x="380" y="180" width="40" height="80" fill="#ec4899" />
+              <rect x="420" y="180" width="40" height="160" fill="#ec4899" />
+              <rect x="235" y="250" width="20" height="20" fill="white" />
+            </svg>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            href="#about"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >About</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >Skills</a
+          >
+          <a
+            href="#contact"
+            class="btn-primary px-6 py-2.5 rounded-lg text-sm font-semibold text-white"
+          >
+            Connect
+          </a>
+        </div>
+
+        <button class="md:hidden text-white" id="mobile-menu-btn">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="md:hidden hidden absolute top-full left-0 right-0 bg-surface border-b border-white/10"
+        id="mobile-menu"
+      >
+        <div class="container mx-auto px-6 py-6 flex flex-col gap-4">
+          <a
+            href="#about"
+            class="text-gray-400 hover:text-white transition-colors py-2"
+            >About</a
+          >
+          <a
+            href="#projects"
+            class="text-gray-400 hover:text-white transition-colors py-2"
+            >Projects</a
+          >
+          <a
+            href="#skills"
+            class="text-gray-400 hover:text-white transition-colors py-2"
+            >Skills</a
+          >
+          <a
+            href="#contact"
+            class="btn-primary px-6 py-3 rounded-lg text-center font-semibold text-white"
+            >Connect</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <section
+      id="hero"
+      class="min-h-screen flex items-center justify-center relative px-6 pt-20"
+    >
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-sm font-medium text-purple-400 mb-6"
+            >
+              <span class="w-2 h-2 rounded-full bg-green-400"></span>
+              Collab
+            </div>
+
+            <h1
+              class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            >
+              Goodlife Mokgalagadi
+            </h1>
+
+            <p
+              class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-lg"
+            >
+              Backend-focused Software Developer crafting scalable solutions
+              with modern technologies. Based in South Africa 🇿🇦
+            </p>
+
+            <div class="flex flex-wrap gap-4 mb-12">
+              <span class="tag px-4 py-2 rounded-full text-xs font-semibold"
+                >Node.js</span
+              >
+              <span class="tag px-4 py-2 rounded-full text-xs font-semibold"
+                >React</span
+              >
+              <span class="tag px-4 py-2 rounded-full text-xs font-semibold"
+                >PostgreSQL</span
+              >
+              <span class="tag px-4 py-2 rounded-full text-xs font-semibold"
+                >Docker</span
+              >
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                class="btn-primary px-8 py-4 rounded-lg font-semibold text-white flex items-center gap-2"
+              >
+                View My Work
+              </a>
+              <a
+                href="#contact"
+                class="px-8 py-4 rounded-lg font-semibold text-white border border-white/20 hover:bg-white/5 transition-all"
+              >
+                Contact Me
+              </a>
+            </div>
+          </div>
+
+          <div class="order-1 lg:order-2 flex justify-center">
+            <div class="lg:col-span-5 relative">
+              <div
+                class="h-80 lg:h-[28rem] rounded-[2.5rem] overflow-hidden border border-white/10 bg-white/5 relative z-10 group"
+              >
+                <img
+                  src="/assets/Profile.jpeg"
+                  alt="Profile"
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-32 relative">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-16">
+          <p
+            class="text-purple-400 font-semibold mb-4 tracking-widest uppercase text-sm"
+          >
+            About Me
+          </p>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+            Passionate about building
+            <span class="text-gradient">digital experiences</span>
+          </h2>
+        </div>
+
+        <div class="glass-card rounded-2xl p-8 md:p-12">
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            I'm an ICT graduate and backend-focused software developer with a
+            passion for creating practical, scalable applications. My journey in
+            tech started with a curiosity about how things work under the hood,
+            which evolved into a career building robust systems.
+          </p>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            I specialize in modern JavaScript ecosystems, database design, and
+            cloud deployment. When I'm not coding, you'll find me exploring new
+            technologies, contributing to open-source projects, or mentoring
+            aspiring developers in my community.
+          </p>
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-white/10"
+          >
+            <div class="text-center">
+              <div class="text-3xl font-bold text-gradient mb-2">15+</div>
+              <div class="text-sm text-gray-400">Projects Completed</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-gradient mb-2">3+</div>
+              <div class="text-sm text-gray-400">Years Experience</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-gradient mb-2">100%</div>
+              <div class="text-sm text-gray-400">Commitment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-32 relative bg-surface/30">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <p
+            class="text-purple-400 font-semibold mb-4 tracking-widest uppercase text-sm"
+          >
+            Portfolio
+          </p>
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">
+            My Recent <span class="text-gradient">Works</span>
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          id="projects-grid"
+        ></div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-32 relative">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="text-center mb-16">
+          <p
+            class="text-purple-400 font-semibold mb-4 tracking-widest uppercase text-sm"
+          >
+            Expertise
+          </p>
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">
+            Technical <span class="text-gradient">Skills</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Backend -->
+          <div class="skill-category-card rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-purple-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">Backend</h3>
+                <p class="text-sm text-gray-400">Server-side Development</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Node.js / Express</span>
+                  <span class="text-sm text-purple-400">85%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Python / Django</span>
+                  <span class="text-sm text-purple-400">70%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">C# / .NET</span>
+                  <span class="text-sm text-purple-400">75%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Java</span>
+                  <span class="text-sm text-purple-400">65%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 65%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-category-card rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-pink-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">Frontend</h3>
+                <p class="text-sm text-gray-400">User Interface Development</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">React / Next.js</span>
+                  <span class="text-sm text-purple-400">75%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Tailwind CSS</span>
+                  <span class="text-sm text-purple-400">95%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 95%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white"
+                    >JavaScript / TypeScript</span
+                  >
+                  <span class="text-sm text-purple-400">85%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">HTML5 / CSS3</span>
+                  <span class="text-sm text-purple-400">90%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 90%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="skill-category-card rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-teal-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">Database</h3>
+                <p class="text-sm text-gray-400">Data Storage & Management</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">PostgreSQL</span>
+                  <span class="text-sm text-purple-400">78%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 78%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">MongoDB</span>
+                  <span class="text-sm text-purple-400">70%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">SQLite</span>
+                  <span class="text-sm text-purple-400">85%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Redis</span>
+                  <span class="text-sm text-purple-400">60%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 60%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DevOps -->
+          <div class="skill-category-card rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div
+                class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-orange-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">DevOps & Tools</h3>
+                <p class="text-sm text-gray-400">Deployment & Workflow</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Git / GitHub</span>
+                  <span class="text-sm text-purple-400">85%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Docker</span>
+                  <span class="text-sm text-purple-400">65%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 65%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">Linux / Bash</span>
+                  <span class="text-sm text-purple-400">70%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 70%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-item rounded-lg p-4">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-white">AWS / Cloud</span>
+                  <span class="text-sm text-purple-400">55%</span>
+                </div>
+                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    class="skill-bar-fill h-full rounded-full"
+                    style="width: 55%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-32 relative bg-surface/30">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-16">
+          <p
+            class="text-purple-400 font-semibold mb-4 tracking-widest uppercase text-sm"
+          >
+            Get In Touch
+          </p>
+          <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">
+            Let's <span class="text-gradient">Connect</span>
+          </h2>
+        </div>
+
+        <div class="glass-card rounded-2xl p-8 md:p-12">
+  <div class="text-center">
+    <h3 class="text-3xl font-bold text-white mb-3">Let's Connect</h3>
+
+    <p class="text-gray-400 max-w-xl mx-auto mb-10">
+      Whether you have a project, job opportunity, or simply want to chat
+      about software development, feel free to reach out through any of the
+      platforms below.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+    <!-- Email -->
+    <a
+      href="mailto:gyebasnyl@gmail.com"
+      class="flex items-center gap-4 rounded-xl border border-white/10 bg-background/50 p-5 hover:border-purple-500 hover:bg-white/5 transition-all duration-300"
+    >
+      <div
+        class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          />
+        </svg>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold">Email</p>
+        <p class="text-gray-400 text-sm">gyebasnyl@gmail.com</p>
+      </div>
+    </a>
+
+    <a
+      href="https://github.com/Thee-Hunter-debug"
+      target="_blank"
+      class="flex items-center gap-4 rounded-xl border border-white/10 bg-background/50 p-5 hover:border-purple-500 hover:bg-white/5 transition-all duration-300"
+    >
+      <div
+        class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400"
+      >
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 .5C5.648.5.5 5.648.5 12a11.5 11.5 0 008 10.932c.585.108.8-.254.8-.566v-2.216c-3.252.707-3.938-1.382-3.938-1.382-.531-1.35-1.296-1.709-1.296-1.709-1.06-.725.08-.71.08-.71 1.172.082 1.788 1.203 1.788 1.203 1.041 1.783 2.73 1.269 3.396.97.105-.754.407-1.269.74-1.561-2.597-.296-5.329-1.298-5.329-5.776 0-1.276.456-2.32 1.203-3.138-.12-.295-.522-1.485.114-3.096 0 0 .98-.314 3.21 1.199a11.16 11.16 0 015.842 0c2.229-1.513 3.208-1.199 3.208-1.199.638 1.611.235 2.801.115 3.096.748.818 1.202 1.862 1.202 3.138 0 4.489-2.736 5.476-5.341 5.766.419.362.792 1.073.792 2.164v3.207c0 .314.211.68.804.565A11.5 11.5 0 0023.5 12C23.5 5.648 18.352.5 12 .5z"
+          />
+        </svg>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold">GitHub</p>
+        <p class="text-gray-400 text-sm">@Thee-Hunter-debug</p>
+      </div>
+    </a>
+
+ 
+    <a
+      href="https://linkedin.com/in/goodlife-mokgalagadi-b83070238"
+      target="_blank"
+      class="flex items-center gap-4 rounded-xl border border-white/10 bg-background/50 p-5 hover:border-purple-500 hover:bg-white/5 transition-all duration-300"
+    >
+      <div
+        class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M4.98 3.5C4.98 4.88 3.86 6 2.49 6S0 4.88 0 3.5 1.12 1 2.49 1s2.49 1.12 2.49 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.3h.1c.67-1.27 2.3-2.6 4.74-2.6C22.2 7.7 24 10.03 24 14.1V24h-5v-8.3c0-1.98-.04-4.53-2.76-4.53-2.77 0-3.2 2.16-3.2 4.38V24h-5V8z"
+          />
+        </svg>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold">LinkedIn</p>
+        <p class="text-gray-400 text-sm">Connect professionally</p>
+      </div>
+    </a>
+
+    <!-- WhatsApp -->
+    <a
+      href="https://wa.me/27632645127"
+      target="_blank"
+      class="flex items-center gap-4 rounded-xl border border-white/10 bg-background/50 p-5 hover:border-purple-500 hover:bg-white/5 transition-all duration-300"
+    >
+      <div
+        class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12.04 2C6.5 2 2 6.48 2 12c0 1.76.46 3.48 1.33 5L2 22l5.13-1.31A10 10 0 0012.04 22C17.56 22 22 17.52 22 12S17.56 2 12.04 2z"/>
+        </svg>
+      </div>
+
+      <div>
+        <p class="text-white font-semibold">WhatsApp</p>
+        <p class="text-gray-400 text-sm">Send me a message</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+      </div>
+    </section>
+
+    <footer class="py-8 border-t border-white/10">
+      <div
+        class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-2">
+          <div class="w-12 h-12 relative">
+            <svg viewBox="0 0 512 512" class="w-full h-full">
+              <rect x="140" y="180" width="80" height="40" fill="#a855f7" />
+              <rect x="140" y="220" width="40" height="80" fill="#a855f7" />
+              <rect x="140" y="300" width="80" height="40" fill="#a855f7" />
+              <rect x="180" y="260" width="40" height="80" fill="#a855f7" />
+              <rect x="260" y="180" width="40" height="160" fill="#ec4899" />
+              <rect x="300" y="180" width="40" height="80" fill="#ec4899" />
+              <rect x="340" y="220" width="40" height="40" fill="#ec4899" />
+              <rect x="380" y="180" width="40" height="80" fill="#ec4899" />
+              <rect x="420" y="180" width="40" height="160" fill="#ec4899" />
+              <rect x="235" y="250" width="20" height="20" fill="white" />
+            </svg>
+          </div>
+
+          <span class="text-gray-500 text-sm">© All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="pages/script.js"></script>
+  </body>
+</html>

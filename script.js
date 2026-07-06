@@ -30,20 +30,12 @@ mobileMenuBtn.addEventListener("click", () => {
 
 const projects = [
   {
-    title: "WE INNOVATE",
-    tags: ["Android Studio", "Java", "SQLite"],
-    desc: "A comprehensive innovation platform for entrepreneurs featuring real-time collaboration tools and project tracking.",
-    img: "",
-    github: "https://github.com/Thee-Hunter-debug",
-    status: "Completed",
-  },
-  {
     title: "Eco Grd12",
     tags: ["Android Studio", "Kotlin", "SQLite"],
     desc: "Grade 12 Economics based game application",
-    img: "",
+    img: "./assests/",
     github: "https://github.com/Thee-Hunter-debug/ECO-Grd12",
-    status: "In Progress",
+    status: "Completed",
   },
   {
     title: "Task Management Tool",

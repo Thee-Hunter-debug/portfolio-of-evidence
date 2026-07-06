@@ -31,7 +31,7 @@ mobileMenuBtn.addEventListener("click", () => {
 const projects = [
   {
     title: "Eco Grd12",
-    tags: ["Android Studio", "Kotlin", "SQLite"],
+    tags: ["Android Studio", "Kotlin", "SQLite", "SharedPreferences"],
     desc: "Grade 12 Economics based game application",
     img: "./assets/Eco grad12 Dash.jpeg",
     github: "https://github.com/Thee-Hunter-debug/ECO-Grd12",
@@ -39,7 +39,7 @@ const projects = [
   },
   {
     title: "Task Management Tool",
-    tags: ["Node.js","Express.js", "PostgreSQL", "HTML", "TailWind"],
+    tags: ["Node.js","Express.js", "PostgreSQL", "HTML", "TailWind CSS"],
     desc: "Collaborative task manager for remote teams with drag-and-drop boards and time tracking.",
     img: "./assets/taskman.png",
     github: "https://github.com/Thee-Hunter-debug/todo-app",
@@ -49,7 +49,7 @@ const projects = [
     title: "Portfolio Dashboard",
     tags: ["HTML", "JavaScript", "TailWind"],
     desc: "Analytics dashboard for tracking portfolio performance with interactive charts.",
-    img: "./assets/poe.png",
+    img: "./assets/Poe.png",
     github: "https://github.com/Thee-Hunter-debug/poe",
     status: "Completed",
   },

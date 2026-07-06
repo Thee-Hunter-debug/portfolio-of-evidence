@@ -19,14 +19,12 @@ window.addEventListener("scroll", () => {
   }
 });
 
-
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
 mobileMenuBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
 });
-
 
 const projects = [
   {
@@ -50,11 +48,10 @@ const projects = [
     tags: ["HTML", "JavaScript", "TailWind"],
     desc: "Analytics dashboard for tracking portfolio performance with interactive charts.",
     img: "./assets/Poe.png",
-    github: "https://github.com/Thee-Hunter-debug/poe",
+    github: "https://github.com/Thee-Hunter-debug/portfolio-of-evidence",
     status: "Completed",
   },
 ];
-
 
 const projectsGrid = document.getElementById("projects-grid");
 
@@ -93,7 +90,6 @@ projects.forEach((p) => {
   `;
 });
 
-
 document.getElementById("contact-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -107,7 +103,6 @@ document.getElementById("contact-form").addEventListener("submit", (e) => {
     e.target.reset();
   }, 3000);
 });
-
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
